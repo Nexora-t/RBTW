@@ -1,146 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Remove Background</title>
-   <link rel="stylesheet" href="styles.css">
-    <!--<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous"
-    />-->
-    <style>
-        /* Hide the input button using CSS */
-        #fileInput {
-            display: none;
-        }
-        .center-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .description {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <div class="container mt-4">
-        <div class="row mt-4 justify-content-center">
-            <div class="col-md-8 card mt-4 center-content">
-                <form>
-                    <div class="form-group">
-                        <!-- Element to replace file selection -->
-                        <div id="fileSelector" style="cursor: pointer;">
-                            <img class="png" src="ic_photo_library_white_24dp.png" alt="Upload" style="width: 250px; height: auto;">
-                            <p class="ms" id="fileName">No file chosen</p>
-                        </div>
 
-                        <!-- Hidden input element for file selection -->
-                        <input id="fileInput" type="file" />
-                    </div>
+    <title>Services Website</title>
 
-                    <input
-                        class="btn"
-                        type="button"
-                        onclick="submitHandler()"
-                        value="REMOVE BACKGROUND"
-                    />
-                </form>
-                <br />
-                <button class="btn" onclick="downloadFile()">
-                    Download File
-                </button>
-              <div id="imageContainer" class="mt-4 d-flex justify-content-center align-items-center" style="height: 300px; border: 2px solid #007bff; border-radius: 10px; background-color: #f8f9fa;">
-    <!-- الصورة المعدلة ستظهر هنا -->
+    <!--<link rel="stylesheet" href="style.css"-->
+<style>
+  body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding: 0;
+
+    text-align: left;
+
+}
+
+header {
+
+    background-color: #333;
+
+    color: #fff;
+
+    padding: 10px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.logo img {
+
+    max-width: 50px;
+
+}
+
+.language-switch button {
+
+    background-color: #007BFF;
+
+    color: #fff;
+
+    border: none;
+
+    padding: 5px 10px;
+
+    cursor: pointer;
+
+}
+
+.language-switch button:hover {
+
+    background-color: #0056b3;
+
+}
+
+nav ul {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    background-color: #f4f4f4;
+
+}
+
+nav ul li {
+
+    margin: 0 15px;
+
+}
+
+nav ul li a {
+
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 16px;
+
+    padding: 10px 15px;
+
+    display: block;
+
+}
+
+nav ul li a:hover {
+
+    background-color: #ddd;
+
+}
+
+main {
+
+    padding: 20px;
+
+}
+
+section {
+
+    margin-bottom: 40px;
+
+    border-bottom: 1px solid #ddd;
+
+    padding-bottom: 20px;
+
+}
+
+section h2 {
+
+    font-size: 24px;
+
+}
+
+section img {
+
+    max-width: 100%;
+
+    height: auto;
+
+}
+
+section p {
+
+    font-size: 18px;
+
+}
+
+.btn {
+
+    background-color: #007BFF;
+
+    color: #000;
+
+    padding: 10px 20px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    margin-top: 10px;
+
+    text-decoration:none;
+
+}
+
+.btn:hover {
+
+    background-color: #0056b3;
+
+}
+
+footer {
+
+    background-color: #333;
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: 10px 0;
+
+    margin-top: 20px;
+
+}
+
+.jon{
+
+  width: 100%;
+
+  height: 660px;
+
+}
+
+          .card {
+
+            background-color: #fff;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            max-width: 400px;
+
+            padding: 20px;
+
+            text-align: center;
+
+        }
+  
+
+        .pa {
+
+            font-size: 16px;
+
+            color: #555;
+
+            margin-bottom: 20px;
+
+        }
+  </style>
+
+</head>
+
+<body>
+
+ <header>
+
+        <div class="logo">
+
+            <img alt="Logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfk3r0TOQ-q5Y43bY4R-zeOU-gjx7h6NgYUZwprxhLMDa5vk22Ardzp4VWBpmj68uV-9uZNXglrVZL7_rm2HI4sfgJLfWhF3CpBDfVAlu-al0UyExfjFToCFmGQeoeHaDHJ_j4_jj4ybQeaVDt8ZNuhdo8ah3jDDb9U3KzPSkxalAAXBMfpQsnMgH8BVPW/s398/20240605_013202712.png" />
+
+        </div>
+
+        <div class="language-switch">
+
+            
+
+        </div>
+
+    </header>
+
+    <nav>
+
+        <ul>
+         <div class="card">
+
+       
+
+        <p class="pa">Upload your image to easily remove its background and get a clean, professional result within seconds.</p>
+               
+        </ul>
+
+    </nav>
+
+<div>
+
+  <img class="jon" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYE4HfeZQfzenQCxm14TOgoIL4hMa2wltGeATNY2QenKhWlADoowv0zAKIjIK5iBit6qmSiJcxDQcpyKFnzKcbQ4snFc9pRUyuRq8C2lGP4qEHohYiyQGDQPZCODlCRd7P2YrSX-tR0g1ar8eSJYTXh2gYkYY9pnUwEzmOxZHNwera64JT0NPnWNqOOanI/s2245/2.png"/>
+
+  
+
 </div>
 
-            <!-- The processed image will be added here -->
-            <br>
-            <br>
-        </div>
+     <main>
 
-        </div>
-        
-        <!-- Container to display the image after background removal -->
-      
-    </div>
+        <section id="background-removal">
+
+            <h2>Background Removal</h2>
+
+            <img alt="Background Removal" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHkdF9JzOa8_P4nUjY_jbN2iDyWOQRuZUm1ETPzLzUXV6S_Vcpa2ueQST0ca53pqXIRLu124oua5SqDsv78uRtcdyLTwQ9ndKsT364ZT4PQNJG1Dy9wRSkeANknXpLdTWJ_ZHhK_4Fj3CGoSJ4eNA2VjpNUEfCxU6xD323_XZI6I7dAUxSEGb30-12GTZx/s128/2355864.png" />
+
+            <p>This service helps you easily and quickly remove image backgrounds, It also works AI.</p>
+
+             <a class="btn" href="https://nexora-t.github.io/RBTW/">start service.</a>
+
+   </section>
+
+        <section id="speech-to-text">
+
+            <h2>Image Format Converter</h2>
+
+            <img alt="Speech to Text" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-t2Z_WVwqWuSs6o-PbBKuSp3O7QfDgsOzaK_0YlxVi7IKdureMt4vb4hrWYYzd3O0GuqsyhCZvrXhOcW47rIg_seygLYdLs9cBT0LDSR_i2CIgK2Ue1lkvSu1wQYsoQCmxu1aiKCIHxvWHHJXxDuK-PMW8GyWtUddtqWDneKSqp0lRtEmjCmUvlXE9olt/s128/422950.png" />
+
+            <p>while changing the image format converts it between formats like JPEG and PNG to preserve quality or reduce size.</p>
+
+            <a class="btn" href="index.html">start service.</a>
+
+        </section>
+
+        <section id="text-to-speech">
+
+            <h2>Resize Your Image</h2>
+
+            <img alt="Text to Speech" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTnRuU03BrlrNTKK5rK1c2xhuobpBO0VHDfiEOPaVt95v6AEoIeQuZW6sya76tH3G7Rltw-yo30ThEHoiQ9P_6gzKU5Vnqm6uUDTUsrVhcl8MA2wj6C8DJLAfuGQppV_1GCwMuXRE6IRanndEmzI63OLaKiTOBejUc1MTUzqVpSH-jmr_15BspqCWD_9Iw/s128/9850776.png" />
+
+            <p>Resizing images aims to adjust their dimensions for performance or compatibility</p>
+
+            <a class="btn" href="tont.html">start service.</a>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>© 2024 All rights reserved.</p>
+
+    </footer>
+
     <script src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-        let imageURL;
 
-        // Add click event to the image and text to open file selection window
-        document.getElementById('fileSelector').addEventListener('click', function() {
-            document.getElementById('fileInput').click();
-        });
-
-        // Add event to update the selected file name
-        document.getElementById('fileInput').addEventListener('change', function() {
-            const fileName = this.files[0] ? this.files[0].name : "No file chosen";
-            document.getElementById('fileName').textContent = fileName;
-        });
-
-        function submitHandler() {
-            console.log("click");
-            const fileInput = document.getElementById("fileInput");
-            console.log(fileInput.files);
-            const image = fileInput.files[0];
-
-            // Multipart file
-            const formData = new FormData();
-            formData.append("image_file", image);
-            formData.append("size", "auto");
-
-            const apiKey = "4x9LmCC2ZSjnNinwa2kH1yXF";
-
-            fetch("https://api.remove.bg/v1.0/removebg", {
-                method: "POST",
-                headers: {
-                    "X-Api-Key": apiKey,
-                },
-                body: formData,
-            })
-            .then(function (response) {
-                return response.blob();
-            })
-            .then(function (blob) {
-                console.log(blob);
-                const url = URL.createObjectURL(blob);
-                imageURL = url;
-
-                // Remove the previous image if any
-                const imageContainer = document.getElementById("imageContainer");
-                imageContainer.innerHTML = '';
-
-                // Create and display the new image
-                const img = document.createElement("img");
-                img.src = url;
-                img.classList.add("img-fluid");
-                imageContainer.appendChild(img);
-            })
-            .catch(function (error) {
-                console.error("Error:", error);
-            });
-        }
-
-        function downloadFile() {
-            var anchorElement = document.createElement("a");
-            anchorElement.href = imageURL;
-            anchorElement.download = "bg-remove.png";
-            document.body.appendChild(anchorElement);
-
-            anchorElement.click();
-
-            document.body.removeChild(anchorElement);
-        }
-    </script>
 </body>
+
 </html>
+
