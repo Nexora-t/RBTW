@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact the Developer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 100%;
+            width: 90%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .social-links a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .social-links a.facebook {
+            background-color: #1C82CC;
+        }
+        .social-links a.facebook:hover {
+            background-color: #2D4373;
+        }
+        .social-links a.twitter {
+            background-color: #000000;
+        }
+        .social-links a.twitter:hover {
+            background-color: #6C6C6C;
+        }
+        .social-links a.instagram {
+            background-color: #e4405f;
+        }
+        .social-links a.instagram:hover {
+            background-color: #d63046;
+        }
+        .paypal {
+            margin: 20px 0;
+            background-color: #0070ba;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .paypal:hover {
+            background-color: #005c99;
+        }
+        .alert {
+            color: #0070ba;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact the Developer</h2>
+        <p>Please reach out via social media:</p>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61566919956366" target="_blank" class="facebook">Facebook</a>
+            <a href="https://x.com/nexorat2023?t=RxdRZuh6LKhouvCa1Uiwpw&s=09" target="_blank" class="twitter">X</a>
+            <a href="https://www.instagram.com/invites/contact/?i=1rlptkhfekr6q&utm_content=ullbgf6" target="_blank" class="instagram">Instagram</a>
+        </div>
+
+        <h3>Support the Developer via PayPal</h3>
+        <div class="paypal" onclick="copyPayPal()">Copy PayPal Email</div>
+        <p class="alert" id="alertMessage"></p>
+    </div>
+
+    <script>
+        function copyPayPal() {
+            const email = "yassinaariche0@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                document.getElementById('alertMessage').textContent = "PayPal Email copied!";
+            });
+        }
+    </script>
+</body>
+</html>
